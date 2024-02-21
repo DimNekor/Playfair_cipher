@@ -8,7 +8,7 @@ Cipher::Cipher(){
 	}
 }
 
-int Cipher::CountLetters(char* word){
+int Cipher::CountLetters(char*& word){
 	char ch = '';
 	int i = 0;
 	while (ch != '\0'){
@@ -28,7 +28,7 @@ bool Cipher::IsLetterInArr(char ch, char* arr){
 	return false;
 }
 
-void Cipher::FillArr(char* arr){
+void Cipher::FillArr(char*& arr){
 	int len = CountLetters(arr);
 	int temp = new char[len]
 	for (int i = 0; i < len; i++)
@@ -42,20 +42,19 @@ void Cipher::DeleteRepLetters(){
 	temp = FillArr(temp);
 	j = 0;
        	for (int i = 0; i < key_len; i++){
-		if (!IsLetterInArr(key[i], temp))
+		if (!IsLetterInArr(key[i], temp)){
 			temp[j] = key[i];
 			j++;
-		if (i == key_len - 2)
-			temp[i+1] == key[i+1];
+		}
 	}
 	delete [] key;
 	key = temp
 }
 
-Cipher::Cipher(char* key){
+Cipher::Cipher(char*& key){
 	Cipher();
 	key = key;
 }
 
-void Cipher::AddKey(char* word){
+void Cipher::AddKey(char*& word){
 	
